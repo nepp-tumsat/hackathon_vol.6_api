@@ -19,7 +19,7 @@ async def create_task(
 ):
     return await task_crud.create_task(db, task_body)
 
-@router.post("/add_info" )  #名前、職業、趣味、趣味にかけるお金を追加(自由に変更可)
+@router.post("/gpt" )  #名前、職業、趣味、趣味にかけるお金を追加(自由に変更可)
 async def add_info(
 
 ):
@@ -32,19 +32,14 @@ async def update_task(
     task = await task_crud.get_task(db, task_id=task_id)
     if task is None:
         raise HTTPException(stasus_code=404, detail="Task not found")
-    
+
     return await task_crud.update_task(db, task_body, original=task)
 
-@router.put("/update_task") #タスク内容、期限変更(自由に変更可)
-async def update_task_content(
-
-):
-    pass
 
 @router.delete("/tasks/{task_id}", response_model=None)
 async def delete_task(task_id: int, db: AsyncSession = Depends(get_db)):
     task = await task_crud.get_task(db, task_id=task_id)
     if task is None:
         raise HTTPException(status_code=404, detail="Task not found")
-    
+
     return await task_crud.delete_task(db, original=task)

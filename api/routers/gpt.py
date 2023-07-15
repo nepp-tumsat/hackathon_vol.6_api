@@ -11,7 +11,7 @@ class Info(BaseModel):
     money: int
 
 router = APIRouter()
-openai.api_key = "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"
+openai.api_key = ""
 job='学生'
 hobby='将棋、囲碁、テニス'
 money="20000"

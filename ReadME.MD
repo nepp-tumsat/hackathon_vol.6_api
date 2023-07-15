@@ -8,6 +8,9 @@ $ docker-compose run --entrypoint "poetry install --no-root" demo-app
 
 $ docker-compose build --no-cache
 
+↓docker-compose upした状態で
+$ docker-compose exec demo-app poetry run python -m api.migrate_db
+
 $docker-compose up
 
 

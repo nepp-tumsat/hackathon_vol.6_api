@@ -3,14 +3,14 @@ import os
 import openai
 
 router = APIRouter()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key_path = "./.apikey"
 
 @router.get("/gpt")
 async def gpt_advice():
     response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
-        {"role": "user", "content": "お勧めの気分転換は？"},
+        {"role": "user", "content": "お勧めの気晴らしは？"},
     ],
     )
     return response.choices[0]["message"]["content"].strip()

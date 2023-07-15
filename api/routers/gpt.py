@@ -4,6 +4,7 @@ import os
 #import api.schemas.gpt as gpt_schema
 from typing import Optional
 from pydantic import BaseModel, Field
+from api.routers import apikey
 
 class Info(BaseModel):
     name: Optional[str] = Field(None, example="松原健太郎")
@@ -12,10 +13,11 @@ class Info(BaseModel):
     money: Optional[str] = Field(None, example="40000")
 
 router = APIRouter()
-openai.api_key = "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"
+openai.api_key = apikey.key
 
 @router.get("/gpt")
 async def gpt_advice():
+    username=os.environ.get('USERSNAME')
     job=os.environ.get('USERSJOB')
     hobby=os.environ.get('USERSHOBBY')
     money=os.environ.get('USERSMONEY')
@@ -27,8 +29,9 @@ async def gpt_advice():
         {"role": "user", "content": qestion},
     ],
     )
+
     msg = response.choices[0]["message"]["content"].strip()
-    return {"advice" : msg}
+    return {"username":username,"advice" : msg}
 
 
 @router.post("/gpt")

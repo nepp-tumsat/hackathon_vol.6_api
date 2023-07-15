@@ -1,3 +1,1 @@
-./api/routers/.env
-
-api/routers/.apikey
+api/routers/apikey.py

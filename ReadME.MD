@@ -15,7 +15,7 @@ $ docker-compose exec demo-app poetry run python -m api.migrate_db
 $docker-compose up
 
 
-## データベースの確認方法
+# データベースの確認方法
 
 # 以下のコマンドをターミナルで順番に打つ
 

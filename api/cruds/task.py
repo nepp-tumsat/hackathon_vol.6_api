@@ -42,6 +42,7 @@ async def update_task(
     db:AsyncSession, task_create: task_schema.TaskCreate, original: task_model.Task
 ) -> task_model.Task:
     original.title = task_create.title
+    original.limit = task_create.limit
     db.add(original)
     await db.commit()
     await db.refresh(original)

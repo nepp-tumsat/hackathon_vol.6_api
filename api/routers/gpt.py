@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 
+import openai
+
 router = APIRouter()
 
 @router.get("/gpt")

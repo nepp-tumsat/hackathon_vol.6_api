@@ -1,6 +1,13 @@
 # hackathon_vol.6_api
 
-## cd コマンドでFastAPIに移動し、以下の順番でコードを実行する
+## 起動方法
+hackathon_vol.6_api/api/routers/apikey.pyを作成し
+
+key="{openaiのAPIKEY}"
+
+を記述
+
+hackathon_vol.6_api直下に移動し、以下の順番でコードを実行する
 
 $docker-compose build
 

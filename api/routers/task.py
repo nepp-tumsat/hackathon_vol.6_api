@@ -3,11 +3,27 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from fastapi.middleware.cors import CORSMiddleware
+
 import api.cruds.task as task_crud
 from api.db import get_db
 import api.schemas.task as task_schema
 
 router = APIRouter()
+
+origins = [
+    'http://localhost:8000/gpt',
+    
+    "http://localhost:3000",
+]
+
+router.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @router.get("/tasks", response_model=List[task_schema.Task])

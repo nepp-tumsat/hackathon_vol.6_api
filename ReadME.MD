@@ -1,12 +1,15 @@
 # hackathon_vol.6_api
 
+詳細はフロント側→https://github.com/nepp-tumsat/hackathon_vol.6
+
+
 ## こだわりポイント
 
 
 
 ## 開発期間
 
-2,3日
+ハッカソン期間中の2,3日
 
 ## 使用技術
 - HTML/CSS
@@ -31,13 +34,13 @@ dockerで一括管理
 ## 起動方法
 hackathon_vol.6_api/api/routers/apikey.pyを作成し
 ```
-key="{openaiのAPIKEY}"
+ key="{openaiのAPIKEY}"
 ```
 を記述
 
 hackathon_vol.6_api直下に移動し、ターミナルで以下の順番でスクリプトを実行する
 ```
-$docker-compose build
+$ docker-compose build
 
 $ docker-compose run --entrypoint "poetry install --no-root" demo-app
 
@@ -47,12 +50,12 @@ $ docker-compose build --no-cache
 ```
 $ docker-compose exec demo-app poetry run python -m api.migrate_db
 
-$docker-compose up
+$ docker-compose up
 ```
 
 ## データベースの確認方法
 
-## 以下のコマンドをターミナルで順番に打つ
+## 以下のスクリプトをターミナルで実行
 ```
 $ docker-compose exec db mysql demo
 
@@ -62,7 +65,8 @@ mysql> DESCRIBE tasks;  (taskテーブルの中身を確認)
 
 mysql> DESCRIBE dones;  (doneテーブルの中身を確認)
 ```
-## dockerが立ち上がっている状態で以下のコードを実行する(ユニットテストの際に使用、-Dは開発者モードの時のみ実行される。デプロイ時には関係しない)
+## dockerが立ち上がっている状態で以下のスクリプトを実行する(ユニットテストの際に使用、-Dは開発者モードの時のみ実行される。デプロイ時には関係しない)
 ```
-$docker-compose exec demo-app poetry add -D pytest-asyncio aiosqlite httpx
+$ docker-compose exec demo-app poetry add -D pytest-asyncio aiosqlite httpx
 ```
+
